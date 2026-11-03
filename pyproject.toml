@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "uoink-lite"
+version = "0.1.0"
+description = "YouTube transcript MCP server that remembers every transcript it fetches."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Ryan Biddy" }]
+keywords = ["mcp", "model-context-protocol", "youtube", "transcript", "captions", "claude", "uoink"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video",
+]
+dependencies = [
+    "mcp>=2.3,<3",
+    "youtube-transcript-api>=1.2.3,<2",
+]
+
+[project.urls]
+Homepage = "https://github.com/ryanbiddy/uoink-lite"
+Issues = "https://github.com/ryanbiddy/uoink-lite/issues"
+Uoink = "https://uoink.app"
+
+[project.scripts]
+uoink-lite = "uoink_lite.server:main"
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/uoink_lite"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
